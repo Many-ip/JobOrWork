@@ -47,4 +47,21 @@ class OfertaRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllWithEmpresa(): array
+    {
+        /*
+            'SELECT o.id, o.titol, o.descripcio, o.data_pub, e.nom AS empresa 
+            FROM App\Entity\Oferta o LEFT JOIN App\Entity\Empresa e WITH o.empresa = e.id
+            '
+        */
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT o.id, o.titol, o.descripcio, o.dataPub, e.nom AS empresa 
+            FROM App\Entity\Oferta o LEFT JOIN App\Entity\Empresa e WITH o.empresa = e.id'
+        );
+
+        return $query->getResult();
+    }
+
 }

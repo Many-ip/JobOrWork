@@ -13,6 +13,8 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/admin/oferta' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\Admin\\AdminOfertaController::admin'], null, null, null, false, false, null]],
+        '/admin/oferta/add' => [[['_route' => 'newOferta', '_controller' => 'App\\Controller\\Admin\\AdminOfertaController::newOferta'], null, null, null, false, false, null]],
         '/empresas' => [[['_route' => 'empresas', '_controller' => 'App\\Controller\\EmpresaController::index'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'ofertas', '_controller' => 'App\\Controller\\OfertaController::index'], null, null, null, false, false, null]],
     ],
@@ -33,8 +35,12 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/empresas/([^/]++)(*:187)'
-                .'|/([^/]++)(*:204)'
+                .'|/admin/oferta/(?'
+                    .'|(\\d+)(*:191)'
+                    .'|elim/([^/]++)(*:212)'
+                .')'
+                .'|/empresas/([^/]++)(*:239)'
+                .'|/([^/]++)(*:256)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -45,8 +51,10 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        187 => [[['_route' => 'empresa', '_controller' => 'App\\Controller\\EmpresaController::detalleEmpresa'], ['id'], null, null, false, true, null]],
-        204 => [
+        191 => [[['_route' => 'admin_oferta_modif', '_controller' => 'App\\Controller\\Admin\\AdminOfertaController::admin_oferta_modif'], ['id'], null, null, false, true, null]],
+        212 => [[['_route' => 'admin_oferta_elim', '_controller' => 'App\\Controller\\Admin\\AdminOfertaController::admin_oferta_elim'], ['id'], null, null, false, true, null]],
+        239 => [[['_route' => 'empresa', '_controller' => 'App\\Controller\\EmpresaController::detalleEmpresa'], ['id'], null, null, false, true, null]],
+        256 => [
             [['_route' => 'oferta', '_controller' => 'App\\Controller\\OfertaController::detalleOferta'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -7,7 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeInterface;
 use App\Entity\Empresa;
 use App\Entity\Oferta;
-use App\Entity\Candidat;
+
+
 
 class OfertaController extends AbstractController
 {
