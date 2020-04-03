@@ -47,4 +47,13 @@ class EmpresaRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getEmpresas(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT e.id, e.nom, e.tipus, e.correu, e.logo FROM App\Entity\Empresa e'
+        );
+
+        return $query->getResult();
+    }
 }

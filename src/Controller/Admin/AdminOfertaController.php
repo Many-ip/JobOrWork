@@ -4,26 +4,22 @@ namespace App\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManager;
 use App\Entity\Oferta;
-use App\Form\AfegirType;
-use Doctrine\Common\Persistence\ObjectManager;
 use App\Form\OfertaType;
 
 class AdminOfertaController extends AbstractController
 {
     /**
-     * @Route("/admin/oferta", name="admin")
+     * @Route("/admin/oferta", name="adminOferta")
      */
-    public function admin()
+    public function index()
     {   
         $ofertas = $this->getDoctrine()
         ->getRepository(Oferta::class)
         ->findAllWithEmpresa();
 
-        return $this->render('admin/admin_oferta/editarOferta.html.twig', [
+        return $this->render('admin/admin_oferta/index.html.twig', [
             'ofertas' => $ofertas,
         ]);
 
@@ -41,10 +37,10 @@ class AdminOfertaController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($oferta);
             $manager->flush();
-            return $this->redirectToRoute("admin");
+            return $this->redirectToRoute("adminOferta");
         }
 
-        return $this->render('admin/admin_oferta/adminModifica.html.twig',
+        return $this->render('admin/admin_oferta/addOferta.html.twig',
         ["oferta" => $oferta, "form" => $form-> createView()]);
 
     }
@@ -58,7 +54,7 @@ class AdminOfertaController extends AbstractController
         $manager->remove($oferta);
         $manager->flush();
 
-        return $this->redirectToRoute("admin");
+        return $this->redirectToRoute("adminOferta");
 
     }
 
@@ -74,9 +70,9 @@ class AdminOfertaController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             $manager->persist($oferta);
             $manager->flush();
-            return $this->redirectToRoute("admin");
+            return $this->redirectToRoute("adminOferta");
         }
-        return $this->render('admin/admin_oferta/adminModifica.html.twig',
+        return $this->render('admin/admin_oferta/addOferta.html.twig',
         ["oferta" => $oferta, "form" => $form-> createView()]);
     }
 

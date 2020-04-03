@@ -88,11 +88,18 @@ class __TwigTemplate_b4a76f4f806a34f3a90b863b4ad1b8ba272c6c4a28b8f9c1f2f829c768b
         echo "\">Empresas</a>
             </li>
             
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"";
-        // line 18
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin");
-        echo "\">Admin</a>
+            <li class=\"nav-item dropdown\">
+                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Admin</a>
+                <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+                    <a class=\"dropdown-item\" href=\"";
+        // line 20
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminOferta");
+        echo "\">Ofertes</a>
+                    <a class=\"dropdown-item\" href=\"";
+        // line 21
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("adminEmpresa");
+        echo "\">Empreses</a>
+                </div>
             </li>
             </ul>
         </div>
@@ -118,7 +125,7 @@ class __TwigTemplate_b4a76f4f806a34f3a90b863b4ad1b8ba272c6c4a28b8f9c1f2f829c768b
 
     public function getDebugInfo()
     {
-        return array (  94 => 18,  87 => 14,  81 => 11,  71 => 4,  68 => 3,  58 => 2,  35 => 1,);
+        return array (  100 => 21,  96 => 20,  87 => 14,  81 => 11,  71 => 4,  68 => 3,  58 => 2,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -139,8 +146,12 @@ class __TwigTemplate_b4a76f4f806a34f3a90b863b4ad1b8ba272c6c4a28b8f9c1f2f829c768b
                 <a class=\"nav-link\" href=\"{{path(\"empresas\")}}\">Empresas</a>
             </li>
             
-            <li class=\"nav-item\">
-                <a class=\"nav-link\" href=\"{{path(\"admin\")}}\">Admin</a>
+            <li class=\"nav-item dropdown\">
+                <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"navbarDropdown\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">Admin</a>
+                <div class=\"dropdown-menu\" aria-labelledby=\"navbarDropdown\">
+                    <a class=\"dropdown-item\" href=\"{{path(\"adminOferta\")}}\">Ofertes</a>
+                    <a class=\"dropdown-item\" href=\"{{path(\"adminEmpresa\")}}\">Empreses</a>
+                </div>
             </li>
             </ul>
         </div>
